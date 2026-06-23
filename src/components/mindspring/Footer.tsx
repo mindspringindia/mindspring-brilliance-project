@@ -27,13 +27,22 @@ export function Footer() {
           </h4>
           <ul className="mt-4 space-y-2 text-sm">
             {links.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="text-white/85 transition-colors hover:text-white"
-                >
-                  {l.label}
-                </a>
+              <li key={l.to}>
+                {l.external ? (
+                  <a
+                    href={l.to}
+                    className="text-white/85 transition-colors hover:text-white"
+                  >
+                    {l.label}
+                  </a>
+                ) : (
+                  <Link
+                    to={l.to}
+                    className="text-white/85 transition-colors hover:text-white"
+                  >
+                    {l.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
