@@ -153,6 +153,36 @@
   }
 }
 
+@utility reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@utility reveal-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@utility reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @utility gradient-hero {
   background-image: var(--gradient-hero);
 }
@@ -167,4 +197,71 @@
 
 @utility shadow-soft {
   box-shadow: var(--shadow-soft);
+}
+
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.08); }
+  66% { transform: translate(-25px, 25px) scale(0.95); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes shimmer-x {
+  0% { transform: translateX(-120%) skewX(-12deg); }
+  100% { transform: translateX(220%) skewX(-12deg); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@utility blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.55;
+  animation: blob-float 14s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@utility drift {
+  animation: drift 6s ease-in-out infinite;
+}
+
+@utility animated-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 12s ease infinite;
+}
+
+@utility marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+@utility shimmer-overlay {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.35), transparent);
+    animation: shimmer-x 3.5s ease-in-out infinite;
+  }
 }
