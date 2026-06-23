@@ -1,11 +1,12 @@
+import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 
-const links = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#who-we-help", label: "Who We Help" },
-  { href: "#enrichment", label: "Enrichment" },
-  { href: "#contact", label: "Contact" },
+const links: { to: string; label: string; external?: boolean }[] = [
+  { to: "/#about", label: "About", external: true },
+  { to: "/#services", label: "Services", external: true },
+  { to: "/schools", label: "Schools" },
+  { to: "/counselling", label: "Counselling" },
+  { to: "/#contact", label: "Contact", external: true },
 ];
 
 export function Footer() {
@@ -26,13 +27,22 @@ export function Footer() {
           </h4>
           <ul className="mt-4 space-y-2 text-sm">
             {links.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="text-white/85 transition-colors hover:text-white"
-                >
-                  {l.label}
-                </a>
+              <li key={l.to}>
+                {l.external ? (
+                  <a
+                    href={l.to}
+                    className="text-white/85 transition-colors hover:text-white"
+                  >
+                    {l.label}
+                  </a>
+                ) : (
+                  <Link
+                    to={l.to}
+                    className="text-white/85 transition-colors hover:text-white"
+                  >
+                    {l.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
