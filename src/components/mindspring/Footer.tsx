@@ -1,11 +1,12 @@
+import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 
-const links = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#who-we-help", label: "Who We Help" },
-  { href: "#enrichment", label: "Enrichment" },
-  { href: "#contact", label: "Contact" },
+const links: { to: string; label: string; external?: boolean }[] = [
+  { to: "/#about", label: "About", external: true },
+  { to: "/#services", label: "Services", external: true },
+  { to: "/schools", label: "Schools" },
+  { to: "/counselling", label: "Counselling" },
+  { to: "/#contact", label: "Contact", external: true },
 ];
 
 export function Footer() {
