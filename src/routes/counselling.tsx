@@ -138,7 +138,7 @@ function Hero() {
           style={{
             width: 520,
             height: 520,
-            background: "oklch(0.88 0.10 220)",
+            background: "oklch(0.88 0.10 258)",
             top: -160,
             right: -120,
           }}
@@ -148,7 +148,7 @@ function Hero() {
           style={{
             width: 420,
             height: 420,
-            background: "oklch(0.65 0.14 250)",
+            background: "oklch(0.65 0.14 258)",
             bottom: -160,
             left: -100,
             animationDelay: "-5s",
